@@ -1,0 +1,27 @@
+{
+    "training_file": "data\\processed\\ml\\ml_train.csv",
+    "test_file": "data\\processed\\ml\\ml_test.csv",
+    "target": "known_exploitation",
+    "features": [
+        "cvss_base_score",
+        "attack_vector",
+        "attack_complexity",
+        "privileges_required",
+        "user_interaction",
+        "primary_cwe",
+        "primary_owasp_category"
+    ],
+    "models": [
+        "logistic_regression",
+        "random_forest"
+    ],
+    "best_model": "logistic_regression",
+    "model_selection_metric": "PR-AUC",
+    "classification_threshold": 0.5,
+    "random_state": 42,
+    "test_size": 0.2,
+    "class_weighting": true,
+    "epss_used_as_feature": false,
+    "target_definition": "Historical CISA KEV membership by the dataset cutoff",
+    "note": "The KEV-derived target is an operational exploitation label, not proof that an unlisted vulnerability is never exploitable."
+}

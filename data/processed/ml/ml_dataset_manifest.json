@@ -1,0 +1,72 @@
+{
+    "source_dataset": "data\\processed\\public_dataset_v1.csv",
+    "total_samples": 27282,
+    "train_samples": 21825,
+    "test_samples": 5457,
+    "target": {
+        "column": "known_exploitation",
+        "positive_label": "1",
+        "negative_label": "0",
+        "positive_samples": 90,
+        "negative_samples": 27192
+    },
+    "model_features": {
+        "numeric": [
+            "cvss_base_score"
+        ],
+        "categorical": [
+            "attack_vector",
+            "attack_complexity",
+            "privileges_required",
+            "user_interaction",
+            "primary_cwe",
+            "primary_owasp_category"
+        ],
+        "all": [
+            "cvss_base_score",
+            "attack_vector",
+            "attack_complexity",
+            "privileges_required",
+            "user_interaction",
+            "primary_cwe",
+            "primary_owasp_category"
+        ]
+    },
+    "reference_columns": [
+        "cve_id",
+        "published_date",
+        "epss",
+        "epss_percentile",
+        "epss_available"
+    ],
+    "excluded_from_first_model": [
+        "epss",
+        "epss_percentile",
+        "vuln_status",
+        "exploit_available_evidence",
+        "all_cwes",
+        "all_owasp_categories",
+        "published_timestamp"
+    ],
+    "split": {
+        "method": "train_test_split",
+        "test_size": 0.2,
+        "stratified": true,
+        "random_state": 42
+    },
+    "train_target_distribution": {
+        "known_exploited": 72,
+        "not_known_exploited": 21753
+    },
+    "test_target_distribution": {
+        "known_exploited": 18,
+        "not_known_exploited": 5439
+    },
+    "important_notes": [
+        "EPSS is retained only as an external benchmark.",
+        "Known exploitation is the prediction target and is never used as a feature.",
+        "Categorical variables will be encoded inside the training pipeline.",
+        "Missing CVSS values are retained for later model-side imputation.",
+        "No random undersampling or synthetic positive samples are performed."
+    ]
+}
